@@ -1,11 +1,25 @@
-name: Context testing
-on: push
+name: CISD
+on: 
+    workflow_dispatch:
+    inputs:
+      prompt:
+        required: true
+        type: string
+      output:
+        required: true
+        type: string
 
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
+      - name: Dummy
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          OUTPUT_NAME: `basename ${{ inputs.output }} | sed 's/\..*$//g'`
+        run: echo ${{ env.OUTPUT_NAME }}
+      #- run: mkdir -p outputs/${{ github.run_id }}/
+      #- run: cp ${{ inputs.output }} outputs/${{ github.run_id }}/`basename ${{ inputs.output }}`
+      #- uses: actions/upload-artifact@v4
+        #with:
+          #name: my-artifact
+          #path: outputs/${{ github.run_id }}/
