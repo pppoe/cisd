@@ -14,4 +14,4 @@ if __name__ == '__main__':
         provider="CPUExecutionProvider",
     )
     images = onnx_pipe(parsed_args.prompt)
-    images[0][0].save(parsed_args.output + ".png")
+    images[0][0].save(parsed_args.output)
