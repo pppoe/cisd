@@ -14,7 +14,6 @@ jobs:
     #runs-on: pppoe/dev:cisd
     runs-on: ubuntu-latest
     steps:
-      - run: 
       - run: touch ${{ inputs.output }}_1.png
       #- run: python3 main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png
       #- run: ls -lh ${{ inputs.output }}_1.png
