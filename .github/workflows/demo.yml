@@ -12,10 +12,12 @@ on:
 jobs:
   generation_1:
     runs-on: ubuntu-latest
-    container:
-      image: pppoe/dev:cisd
+    #container:
+      #image: pppoe/dev:cisd
     steps:
-      - run: python3 main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png
+      - uses: actions/checkout@v3
+      #- run: cd $GITHUB_WORKSPACE && python3 main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png
+      - run: cd $GITHUB_WORKSPACE && echo main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png > ${{ inputs.output }}
       - run: ls -lh ${{ inputs.output }}_1.png
       - uses: actions/upload-artifact@v4
         with:
