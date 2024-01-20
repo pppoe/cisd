@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Dummy
         env:
-          OUTPUT_NAME: `basename ${{ inputs.output }} | sed 's/\..*$//g'`
+          OUTPUT_NAME: `basename ${{ inputs.output }} | cut -d. -f1`
         run: echo ${{ env.OUTPUT_NAME }}
       #- run: mkdir -p outputs/${{ github.run_id }}/
       #- run: cp ${{ inputs.output }} outputs/${{ github.run_id }}/`basename ${{ inputs.output }}`
