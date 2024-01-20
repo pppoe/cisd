@@ -5,17 +5,16 @@ on:
       prompt:
         required: true
         type: string
-        output:
-          required: true
-          type: string
+      output:
+        required: true
+        type: string
 
 jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
-      - name: Dummy
-        run: mkdir -p outputs/${{ github.run_id }}/
-        run: cp ${{ inputs.output }}.png outputs/${{ inputs.output }}_${{ github.run_id }}.png
+      - run: mkdir -p outputs/${{ github.run_id }}/
+      - run: cp ${{ inputs.output }}.png outputs/${{ inputs.output }}_${{ github.run_id }}.png
           #- uses: actions/upload-artifact@v4
           #with:
           #name: my-artifact
