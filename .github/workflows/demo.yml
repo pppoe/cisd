@@ -14,13 +14,19 @@ jobs:
     #runs-on: pppoe/dev:cisd
     runs-on: ubuntu-latest
     steps:
+      - run: 
       - run: touch ${{ inputs.output }}_1.png
       #- run: python3 main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png
       #- run: ls -lh ${{ inputs.output }}_1.png
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.output }}_1.png
-          path: outputs/${{ inputs.output }}_1.png
+          path: ${{ inputs.output }}_1.png
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.output }}_1.png
+          path: outputs/${{ inputs.output }}/1.png
+
   #generation_1:
     #runs-on: pppoe/dev:cisd
       #steps:
