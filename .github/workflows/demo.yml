@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       #- run: cd $GITHUB_WORKSPACE && python3 main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png
-      - run: cd $GITHUB_WORKSPACE && echo main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png > ${{ inputs.output }}
+      - run: cd $GITHUB_WORKSPACE && ls -lh main.py > ${{ inputs.output }}_1.png
       - run: ls -lh ${{ inputs.output }}_1.png
       - uses: actions/upload-artifact@v4
         with:
