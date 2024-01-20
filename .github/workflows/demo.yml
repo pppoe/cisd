@@ -1,6 +1,6 @@
 name: CISD
 on: 
-  sd_image_generation:
+  workflow_dispatch:
     inputs:
       prompt:
         required: true
