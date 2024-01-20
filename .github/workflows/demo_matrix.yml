@@ -1,4 +1,4 @@
-name: CISD
+name: CISD-Matrix20
 on: 
   workflow_dispatch:
     inputs:
