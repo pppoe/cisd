@@ -1,0 +1,27 @@
+name: CISD
+on: 
+  workflow_dispatch:
+    inputs:
+      prompt:
+        required: true
+        type: string
+      output:
+        required: true
+        type: string
+
+jobs:
+  generation_matrix:
+    strategy:
+      matrix:
+        index: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
+    runs-on: ubuntu-latest
+    container:
+      image: pppoe/dev:cisd
+    steps:
+      - uses: actions/checkout@v3
+      - run: cd $GITHUB_WORKSPACE && python3 main.py --prompt "${{ inputs.prompt }}" --output ${{ inputs.output }}_${{ matrix.index }}.png
+      - run: ls -lh ${{ inputs.output }}_${{ matrix.index }}.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.output }}_${{ matrix.index }}.png
+          path: ${{ inputs.output }}_${{ matrix.index }}.png
