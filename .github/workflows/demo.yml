@@ -11,8 +11,9 @@ on:
 
 jobs:
   generation_1:
-    runs-on: pppoe/dev:cisd
-    #runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
+    container:
+      image: pppoe/dev:cisd
     steps:
       - run: python3 main.py --prompt ${{ inputs.prompt }} --output ${{ inputs.output }}_1.png
       - run: ls -lh ${{ inputs.output }}_1.png
