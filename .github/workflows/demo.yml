@@ -14,11 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dummy
-        env:
-          OUTPUT_NAME: `basename ${{ inputs.output }} | cut -d. -f1`
-        run: echo ${{ env.OUTPUT_NAME }}
-      #- run: mkdir -p outputs/${{ github.run_id }}/
-      #- run: cp ${{ inputs.output }} outputs/${{ github.run_id }}/`basename ${{ inputs.output }}`
+        run: mkdir -p outputs/${{ github.run_id }}/
+        run: cp ${{ inputs.output }}.png outputs/${{ inputs.output }}_${{ github.run_id }}.png
       #- uses: actions/upload-artifact@v4
         #with:
           #name: my-artifact
